@@ -2,14 +2,20 @@ package com.example.ryan.calculatorapp;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 
 public class CalculatorActivity extends AppCompatActivity {
+    private EditText input;
+    private TextView output;
+    private int container;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculator);
-
     }
     public static int addition (int a, int b){
         int ans = a + b;
@@ -70,6 +76,13 @@ public class CalculatorActivity extends AppCompatActivity {
      */
 
     public static int factorials (int a){
+        /**
+         * (a) -> ans
+         * Get the factorial of one number.
+         * REQ: a cannot be a negative number
+         * >>> factorials(4)
+         * 24
+         */
         int ans;
         if (a < 2){
             ans = 1;
@@ -80,12 +93,61 @@ public class CalculatorActivity extends AppCompatActivity {
         return ans;
     }
 
-    /**
-     * (a) -> ans
-     * Get the factorial of one number.
-     * REQ: a cannot be a negative number
-     * >>> factorials(4)
-     * 24
-     */
+    public void add(View view) {
+        input = findViewById(R.id.editText);
+        output = findViewById(R.id.output);
+        Editable n1 = input.getText();
+        input.setText(String.valueOf(0));
+        container += Integer.parseInt(String.valueOf(n1));
+        output.setText(String.valueOf(container));
+    }
 
+
+    public void subtract(View view) {
+        input = findViewById(R.id.editText);
+        output = findViewById(R.id.output);
+        Editable n1 = input.getText();
+        input.setText(String.valueOf(0));
+        container -= Integer.parseInt(String.valueOf(n1));
+        output.setText(String.valueOf(container));
+    }
+
+    public void division(View view) {
+        input = findViewById(R.id.editText);
+        output = findViewById(R.id.output);
+        Editable n1 = input.getText();
+        input.setText(String.valueOf(0));
+        container = container / Integer.parseInt(String.valueOf(n1));
+        output.setText(String.valueOf(container));
+    }
+
+    public void multiplication(View view) {
+        input = findViewById(R.id.editText);
+        output = findViewById(R.id.output);
+        Editable n1 = input.getText();
+        input.setText(String.valueOf(0));
+        container = container * Integer.parseInt(String.valueOf(n1));
+        output.setText(String.valueOf(container));
+    }
+
+    public void factorials(View view) {
+        input = findViewById(R.id.editText);
+        output = findViewById(R.id.output);
+        Editable n1 = input.getText();
+        input.setText(String.valueOf(0));
+        container = factorials(container);
+        output.setText(String.valueOf(container));
+    }
+
+    public void equal(View view) {
+    }
+
+    public void Cl(View view) {
+        input = findViewById(R.id.editText);
+        output = findViewById(R.id.output);
+        Editable n1 = input.getText();
+        output.setText(String.valueOf(0));
+        container = 0;
+        output.setText(String.valueOf(container));
+    }
 }
